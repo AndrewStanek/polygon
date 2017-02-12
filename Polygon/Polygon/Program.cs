@@ -9,6 +9,7 @@ namespace Polygon {
   class Program {
     static int option = 0;
     static int polygonPointCount = 0;
+
     static void Main(string[] args) {
       Console.WriteLine("Polygon surface area calculator.");
 
@@ -22,6 +23,7 @@ namespace Polygon {
 
         switch (option) {
           case 1:
+            CalculatePolygonArea();
             break;
           case 2:
             break;
@@ -30,7 +32,30 @@ namespace Polygon {
             break;
         }
       }
+    }
 
+    static void CalculatePolygonArea() {
+      List<Point> points = new List<Point>();
+      int x = 0;
+      int y = 0;
+      Console.Write("Number of vertexes: ");
+      polygonPointCount = Convert.ToInt32(Console.ReadLine());
+
+      if (polygonPointCount <= 2) {
+        Console.WriteLine("Polygon must have at least 3 vertexes.");
+        return;
+      }
+
+      for (int i = 0; i < polygonPointCount; i++) {
+        Console.WriteLine(String.Format("{0} vertex:", i + 1));
+        Console.Write("x: ");
+        x = Convert.ToInt32(Console.ReadLine());
+        Console.Write("y: ");
+        y = Convert.ToInt32(Console.ReadLine());
+        points.Add(new Point(x, y));
+      }
+      Polygon2D polygon = new Polygon2D(points);
+      Console.WriteLine(String.Format("Area of given polygon is: {0}", polygon.SurfaceArea));
     }
   }
 }
