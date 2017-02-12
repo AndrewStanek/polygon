@@ -1,2 +1,2 @@
 language: csharp
-solution: Polygon.sln
+solution: Polygon/Polygon.sln
